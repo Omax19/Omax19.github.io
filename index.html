@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Equity Research Portfolio</title>
+  <title>Omkar Mohite — Equity Research</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap');
@@ -14,9 +14,6 @@
 <body class="min-h-screen flex flex-col justify-between antialiased selection:bg-slate-900 selection:text-white">
 
   <script>
-    // ==========================================
-    // ONLY EDIT THESE 2 VALUES WITH YOUR GITHUB DETAILS
-    // ==========================================
     const CONFIG = {
       githubUsername: "Omax19",
       repoName: "Omax19.github.io"
@@ -24,10 +21,7 @@
   </script>
 
   <!-- Minimal Top Bar -->
-  <header class="w-full max-w-2xl mx-auto px-6 pt-12 pb-6 flex items-center justify-between">
-    <a href="#home" onclick="showPage('home')" class="text-sm font-medium tracking-tight text-slate-900 hover:opacity-75 transition">
-      Portfolio
-    </a>
+  <header class="w-full max-w-2xl mx-auto px-6 pt-12 pb-6 flex items-center justify-end">
     <nav class="flex items-center gap-6 text-sm text-slate-500">
       <a href="#home" onclick="showPage('home')" id="nav-home" class="text-slate-900 font-medium transition">Home</a>
       <a href="#reports" onclick="showPage('reports')" id="nav-reports" class="hover:text-slate-900 transition">Reports</a>
@@ -44,7 +38,7 @@
           Buy-Side Equity Research Analyst
         </p>
         <h1 class="font-serif-display text-4xl sm:text-5xl font-medium tracking-tight text-slate-900 leading-tight">
-          [Omkar Mohite]
+          Omkar Mohite
         </h1>
         <p class="text-base sm:text-lg text-slate-600 leading-relaxed max-w-xl">
           Buy-side equity research analyst with an MBA in Finance, focused on fundamental bottom-up company analysis, earnings quality, and long-term capital allocation. Working toward managing institutional capital and building an independent investment fund.
@@ -52,8 +46,8 @@
       </div>
 
       <div class="pt-2 flex flex-wrap items-center gap-4">
-        <a id="resume-link" href="#" target="_blank" rel="noopener noreferrer"
-           class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium text-white bg-slate-900 rounded-md hover:bg-slate-800 transition">
+        <a id="resume-link" href="javascript:void(0)"
+           class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium text-white bg-slate-900 rounded-md hover:bg-slate-800 transition opacity-75 pointer-events-none">
           Resume (PDF)
         </a>
 
@@ -85,7 +79,7 @@
 
   <!-- Minimal Footer -->
   <footer class="w-full max-w-2xl mx-auto px-6 py-10 text-xs text-slate-400 flex items-center justify-between">
-    <span>&copy; <span id="year"></span> [Omkar Mohite]</span>
+    <span>&copy; <span id="year"></span> Omkar Mohite</span>
     <a href="mailto:omkar19mohite.om@gmail.com" class="hover:text-slate-700 transition">omkar19mohite.om@gmail.com</a>
   </footer>
 
@@ -116,18 +110,25 @@
     async function loadPortfolioFiles() {
       const baseApi = `https://api.github.com/repos/${CONFIG.githubUsername}/${CONFIG.repoName}/contents`;
 
-      // 1. Auto-fetch latest Resume PDF from /resume folder
-      try {
-        const resResponse = await fetch(`${baseApi}/resume`);
-        if (resResponse.ok) {
-          const files = await resResponse.json();
-          const pdf = files.find(f => f.name.toLowerCase().endsWith('.pdf'));
-          if (pdf) {
-            document.getElementById('resume-link').href = `resume/${encodeURIComponent(pdf.name)}`;
+      // 1. Auto-fetch latest Resume PDF from /resume (or /Resume) folder
+      const resumeBtn = document.getElementById('resume-link');
+      for (const folder of ['resume', 'Resume']) {
+        try {
+          const resResponse = await fetch(`${baseApi}/${folder}`);
+          if (resResponse.ok) {
+            const files = await resResponse.json();
+            const pdf = files.find(f => f.name.toLowerCase().endsWith('.pdf'));
+            if (pdf) {
+              resumeBtn.href = `${folder}/${encodeURIComponent(pdf.name)}`;
+              resumeBtn.target = '_blank';
+              resumeBtn.rel = 'noopener noreferrer';
+              resumeBtn.classList.remove('opacity-75', 'pointer-events-none');
+              break;
+            }
           }
+        } catch (e) {
+          console.error(`Could not load ${folder} folder`, e);
         }
-      } catch (e) {
-        console.error('Could not load resume folder', e);
       }
 
       // 2. Auto-fetch all Company Reports from /reports folder
@@ -144,7 +145,6 @@
         }
 
         container.innerHTML = pdfs.map(file => {
-          // Strip .pdf extension and split "Company Name - Quarter"
           const cleanName = file.name.replace(/\.pdf$/i, '');
           const parts = cleanName.split(' - ');
           const company = parts[0].trim();
