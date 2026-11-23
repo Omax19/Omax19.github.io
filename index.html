@@ -10,6 +10,7 @@
 
     :root {
       --bg-library: #141615;
+      --surface-card: #191C1A;
       --ink-parchment: #EFECE6;
       --ink-secondary: #A6A096;
       --ink-muted: #767168;
@@ -42,61 +43,87 @@
     };
   </script>
 
-  <!-- Subtle Top Brass Line -->
-  <div class="w-full border-t border-[#C5A869]/70"></div>
+  <!-- Top Brass Accent Bar -->
+  <div class="w-full h-[2px] bg-[#C5A869]"></div>
 
-  <!-- Minimal Top Navigation -->
-  <header class="w-full max-w-2xl mx-auto px-6 pt-10 pb-4 flex items-center justify-end border-b border-[#2A2E2C]">
+  <!-- Editorial Header -->
+  <header class="w-full max-w-4xl mx-auto px-6 sm:px-10 pt-8 pb-6 flex items-center justify-between border-b border-[#2A2E2C]">
+    <span class="font-ledger text-[11px] uppercase tracking-[0.2em] text-[#A6A096]">
+      Equity Research Archive
+    </span>
     <nav class="flex items-center gap-8 text-xs uppercase tracking-[0.18em] text-[#767168]">
-      <a href="#home" onclick="showPage('home')" id="nav-home" class="text-[#EFECE6] font-medium pb-4 -mb-[17px] border-b border-[#C5A869] transition">
-        Home
+      <a href="#home" onclick="showPage('home')" id="nav-home" class="text-[#EFECE6] font-medium transition">
+        Overview
       </a>
-      <a href="#reports" onclick="showPage('reports')" id="nav-reports" class="hover:text-[#EFECE6] pb-4 -mb-[17px] border-b border-transparent transition">
+      <a href="#reports" onclick="showPage('reports')" id="nav-reports" class="hover:text-[#EFECE6] transition">
         Reports
       </a>
     </nav>
   </header>
 
   <!-- Main Content -->
-  <main class="w-full max-w-2xl mx-auto px-6 my-auto py-16">
+  <main class="w-full max-w-4xl mx-auto px-6 sm:px-10 my-auto py-14 sm:py-20">
 
-    <!-- VIEW 1: LANDING PAGE -->
-    <section id="page-home" class="space-y-9">
-      <div class="space-y-4">
-        <p class="font-ledger text-[11px] uppercase tracking-[0.22em] text-[#C5A869]">
-          Buy-Side Equity Research
+    <!-- VIEW 1: SPLIT EDITORIAL LANDING PAGE -->
+    <section id="page-home" class="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12 items-start">
+
+      <!-- Left Column: Identity & Actions -->
+      <div class="md:col-span-5 space-y-6 md:border-r md:border-[#2A2E2C] md:pr-10">
+        <div class="space-y-3">
+          <p class="font-ledger text-[11px] uppercase tracking-[0.22em] text-[#C5A869]">
+            Buy-Side Analyst
+          </p>
+          <h1 class="font-editorial text-5xl sm:text-[3.5rem] font-medium tracking-[-0.01em] text-[#EFECE6] leading-[1.02]">
+            Omkar Mohite
+          </h1>
+        </div>
+
+        <div class="w-10 h-px bg-[#C5A869]/60"></div>
+
+        <div class="flex flex-col sm:flex-row md:flex-col gap-3 pt-1">
+          <a id="resume-link" href="javascript:void(0)"
+             class="inline-flex items-center justify-between px-5 py-3 text-xs uppercase tracking-[0.16em] font-medium text-[#141615] bg-[#C5A869] hover:bg-[#D4B97D] transition opacity-60 pointer-events-none">
+            <span>Resume</span>
+            <span class="font-ledger text-[10px]">PDF &nearr;</span>
+          </a>
+
+          <button onclick="showPage('reports')"
+             class="inline-flex items-center justify-between px-5 py-3 text-xs uppercase tracking-[0.16em] font-medium text-[#EFECE6] bg-[#191C1A] border border-[#2A2E2C] hover:border-[#C5A869] transition cursor-pointer">
+            <span>Research Reports</span>
+            <span class="text-[#C5A869]">&rarr;</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Right Column: Background & Focus -->
+      <div class="md:col-span-7 space-y-6 md:pt-1">
+        <p class="font-ledger text-[11px] uppercase tracking-[0.2em] text-[#767168]">
+          Mandate &amp; Background
         </p>
-        <h1 class="font-editorial text-5xl sm:text-6xl font-medium tracking-[-0.01em] text-[#EFECE6] leading-[1.05]">
-          Omkar Mohite
-        </h1>
-        <div class="w-12 h-px bg-[#2A2E2C] pt-1"></div>
-        <p class="text-[16px] sm:text-[17px] text-[#A6A096] leading-[1.75] max-w-xl pt-2">
-          Buy-side equity research analyst with an MBA in Finance, focused on fundamental bottom-up company analysis, earnings quality, and long-term capital allocation. Working toward managing institutional capital and building an independent investment fund.
+        <p class="font-editorial text-2xl sm:text-[1.75rem] text-[#EFECE6] leading-[1.35] font-normal">
+          Fundamental bottom-up equity research focused on earnings quality, cash flow durability, and long-term capital allocation.
+        </p>
+        <p class="text-[15px] text-[#A6A096] leading-[1.8]">
+          Buy-side equity research analyst with an MBA in Finance, building toward managing institutional capital and eventually establishing an independent investment fund.
         </p>
       </div>
 
-      <div class="pt-3 flex flex-wrap items-center gap-5">
-        <a id="resume-link" href="javascript:void(0)"
-           class="inline-flex items-center justify-center px-6 py-3 text-xs uppercase tracking-[0.16em] font-medium text-[#141615] bg-[#C5A869] hover:bg-[#D4B97D] transition opacity-60 pointer-events-none">
-          Resume (PDF)
-        </a>
-
-        <button onclick="showPage('reports')"
-           class="inline-flex items-center justify-center px-6 py-3 text-xs uppercase tracking-[0.16em] font-medium text-[#EFECE6] bg-transparent border border-[#2A2E2C] hover:border-[#C5A869] transition cursor-pointer">
-          Research Reports &rarr;
-        </button>
-      </div>
     </section>
 
-    <!-- VIEW 2: RESEARCH REPORTS PAGE -->
+    <!-- VIEW 2: RESEARCH REPORTS LEDGER -->
     <section id="page-reports" class="hidden space-y-8">
-      <div class="space-y-3 border-b border-[#2A2E2C] pb-6">
-        <button onclick="showPage('home')" class="font-ledger text-[11px] uppercase tracking-[0.18em] text-[#767168] hover:text-[#EFECE6] transition mb-1 inline-block cursor-pointer">
-          &larr; Return to Overview
-        </button>
-        <h2 class="font-editorial text-4xl font-medium text-[#EFECE6] tracking-[-0.01em]">
-          Coverage &amp; Reports
-        </h2>
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[#2A2E2C] pb-6">
+        <div class="space-y-2">
+          <button onclick="showPage('home')" class="font-ledger text-[11px] uppercase tracking-[0.18em] text-[#767168] hover:text-[#C5A869] transition block cursor-pointer">
+            &larr; Overview
+          </button>
+          <h2 class="font-editorial text-4xl sm:text-[2.75rem] font-medium text-[#EFECE6] tracking-[-0.01em] leading-none">
+            Coverage &amp; Reports
+          </h2>
+        </div>
+        <span class="font-ledger text-[11px] uppercase tracking-[0.16em] text-[#767168]">
+          Company / Latest Quarter
+        </span>
       </div>
 
       <!-- Auto-populated list from /reports folder -->
@@ -108,9 +135,9 @@
   </main>
 
   <!-- Minimal Footer -->
-  <footer class="w-full max-w-2xl mx-auto px-6 py-9 border-t border-[#2A2E2C] text-xs text-[#767168] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+  <footer class="w-full max-w-4xl mx-auto px-6 sm:px-10 py-8 border-t border-[#2A2E2C] text-xs text-[#767168] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
     <span class="font-ledger text-[11px] tracking-wide">&copy; <span id="year"></span> Omkar Mohite</span>
-    <a href="mailto:omkar19mohite.om@gmail.com" class="hover:text-[#EFECE6] underline underline-offset-4 decoration-[#2A2E2C] hover:decoration-[#C5A869] transition">
+    <a href="mailto:omkar19mohite.om@gmail.com" class="hover:text-[#C5A869] underline underline-offset-4 decoration-[#2A2E2C] hover:decoration-[#C5A869] transition">
       omkar19mohite.om@gmail.com
     </a>
   </footer>
@@ -127,14 +154,14 @@
       if (page === 'reports') {
         home.classList.add('hidden');
         reports.classList.remove('hidden');
-        navReports.className = 'text-[#EFECE6] font-medium pb-4 -mb-[17px] border-b border-[#C5A869] transition';
-        navHome.className = 'hover:text-[#EFECE6] pb-4 -mb-[17px] border-b border-transparent transition';
+        navReports.className = 'text-[#EFECE6] font-medium border-b border-[#C5A869] pb-1 transition';
+        navHome.className = 'hover:text-[#EFECE6] pb-1 transition';
         window.location.hash = 'reports';
       } else {
         reports.classList.add('hidden');
         home.classList.remove('hidden');
-        navHome.className = 'text-[#EFECE6] font-medium pb-4 -mb-[17px] border-b border-[#C5A869] transition';
-        navReports.className = 'hover:text-[#EFECE6] pb-4 -mb-[17px] border-b border-transparent transition';
+        navHome.className = 'text-[#EFECE6] font-medium border-b border-[#C5A869] pb-1 transition';
+        navReports.className = 'hover:text-[#EFECE6] pb-1 transition';
         window.location.hash = '';
       }
     }
@@ -185,16 +212,16 @@
 
           return `
             <a href="reports/${encodeURIComponent(file.name)}" target="_blank" rel="noopener noreferrer"
-               class="py-4 flex items-center justify-between gap-4 group transition">
-              <div class="flex items-baseline gap-4">
+               class="py-5 flex items-center justify-between gap-4 group transition">
+              <div class="flex items-baseline gap-5">
                 <span class="font-ledger text-[11px] text-[#767168]">${indexNum}</span>
-                <span class="font-editorial text-2xl text-[#EFECE6] group-hover:text-[#C5A869] group-hover:underline underline-offset-4 decoration-[#C5A869] transition">
+                <span class="font-editorial text-2xl sm:text-[1.7rem] text-[#EFECE6] group-hover:text-[#C5A869] group-hover:underline underline-offset-4 decoration-[#C5A869] transition">
                   ${company}
                 </span>
               </div>
-              <div class="flex items-center gap-5 shrink-0">
-                ${quarter ? `<span class="font-ledger text-[11px] text-[#A6A096] border border-[#2A2E2C] px-2.5 py-0.5">${quarter}</span>` : ''}
-                <span class="font-ledger text-[11px] uppercase tracking-wider text-[#767168] group-hover:text-[#C5A869] transition">PDF &nearr;</span>
+              <div class="flex items-center gap-6 shrink-0">
+                ${quarter ? `<span class="font-ledger text-[11px] text-[#C5A869] border border-[#2A2E2C] bg-[#191C1A] px-3 py-1">${quarter}</span>` : ''}
+                <span class="font-ledger text-[11px] uppercase tracking-wider text-[#767168] group-hover:text-[#EFECE6] transition">PDF &nearr;</span>
               </div>
             </a>
           `;
