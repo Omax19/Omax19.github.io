@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Equity Research Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap');
+    body { font-family: 'Inter', sans-serif; background-color: #FAFAFA; color: #111827; }
+    .font-serif-display { font-family: 'Newsreader', serif; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between antialiased selection:bg-slate-900 selection:text-white">
+
+  <script>
+    // ==========================================
+    // ONLY EDIT THESE 2 VALUES WITH YOUR GITHUB DETAILS
+    // ==========================================
+    const CONFIG = {
+      githubUsername: "Omax19",
+      repoName: "Omax19.github.io"
+    };
+  </script>
+
+  <!-- Minimal Top Bar -->
+  <header class="w-full max-w-2xl mx-auto px-6 pt-12 pb-6 flex items-center justify-between">
+    <a href="#home" onclick="showPage('home')" class="text-sm font-medium tracking-tight text-slate-900 hover:opacity-75 transition">
+      Portfolio
+    </a>
+    <nav class="flex items-center gap-6 text-sm text-slate-500">
+      <a href="#home" onclick="showPage('home')" id="nav-home" class="text-slate-900 font-medium transition">Home</a>
+      <a href="#reports" onclick="showPage('reports')" id="nav-reports" class="hover:text-slate-900 transition">Reports</a>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="w-full max-w-2xl mx-auto px-6 my-auto py-12">
+
+    <!-- VIEW 1: LANDING PAGE -->
+    <section id="page-home" class="space-y-8">
+      <div class="space-y-4">
+        <p class="text-xs uppercase tracking-widest text-slate-400 font-medium">
+          Buy-Side Equity Research Analyst
+        </p>
+        <h1 class="font-serif-display text-4xl sm:text-5xl font-medium tracking-tight text-slate-900 leading-tight">
+          [Omkar Mohite]
+        </h1>
+        <p class="text-base sm:text-lg text-slate-600 leading-relaxed max-w-xl">
+          Buy-side equity research analyst with an MBA in Finance, focused on fundamental bottom-up company analysis, earnings quality, and long-term capital allocation. Working toward managing institutional capital and building an independent investment fund.
+        </p>
+      </div>
+
+      <div class="pt-2 flex flex-wrap items-center gap-4">
+        <a id="resume-link" href="#" target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium text-white bg-slate-900 rounded-md hover:bg-slate-800 transition">
+          Resume (PDF)
+        </a>
+
+        <button onclick="showPage('reports')"
+           class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium text-slate-700 bg-white border border-slate-200 rounded-md hover:border-slate-400 hover:text-slate-900 transition cursor-pointer">
+          Research Reports &rarr;
+        </button>
+      </div>
+    </section>
+
+    <!-- VIEW 2: RESEARCH REPORTS PAGE -->
+    <section id="page-reports" class="hidden space-y-8">
+      <div class="space-y-2 border-b border-slate-200 pb-6">
+        <button onclick="showPage('home')" class="text-xs text-slate-400 hover:text-slate-700 transition mb-2 inline-block cursor-pointer">
+          &larr; Back
+        </button>
+        <h2 class="font-serif-display text-3xl font-medium text-slate-900">
+          Coverage &amp; Reports
+        </h2>
+      </div>
+
+      <!-- Auto-populated list from /reports folder -->
+      <div id="reports-container" class="divide-y divide-slate-200 border-b border-slate-200">
+        <p class="py-5 text-sm text-slate-400">Loading reports...</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Minimal Footer -->
+  <footer class="w-full max-w-2xl mx-auto px-6 py-10 text-xs text-slate-400 flex items-center justify-between">
+    <span>&copy; <span id="year"></span> [Omkar Mohite]</span>
+    <a href="mailto:omkar19mohite.om@gmail.com" class="hover:text-slate-700 transition">omkar19mohite.om@gmail.com</a>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function showPage(page) {
+      const home = document.getElementById('page-home');
+      const reports = document.getElementById('page-reports');
+      const navHome = document.getElementById('nav-home');
+      const navReports = document.getElementById('nav-reports');
+
+      if (page === 'reports') {
+        home.classList.add('hidden');
+        reports.classList.remove('hidden');
+        navReports.classList.add('text-slate-900', 'font-medium');
+        navHome.classList.remove('text-slate-900', 'font-medium');
+        window.location.hash = 'reports';
+      } else {
+        reports.classList.add('hidden');
+        home.classList.remove('hidden');
+        navHome.classList.add('text-slate-900', 'font-medium');
+        navReports.classList.remove('text-slate-900', 'font-medium');
+        window.location.hash = '';
+      }
+    }
+
+    async function loadPortfolioFiles() {
+      const baseApi = `https://api.github.com/repos/${CONFIG.githubUsername}/${CONFIG.repoName}/contents`;
+
+      // 1. Auto-fetch latest Resume PDF from /resume folder
+      try {
+        const resResponse = await fetch(`${baseApi}/resume`);
+        if (resResponse.ok) {
+          const files = await resResponse.json();
+          const pdf = files.find(f => f.name.toLowerCase().endsWith('.pdf'));
+          if (pdf) {
+            document.getElementById('resume-link').href = `resume/${encodeURIComponent(pdf.name)}`;
+          }
+        }
+      } catch (e) {
+        console.error('Could not load resume folder', e);
+      }
+
+      // 2. Auto-fetch all Company Reports from /reports folder
+      const container = document.getElementById('reports-container');
+      try {
+        const repResponse = await fetch(`${baseApi}/reports`);
+        if (!repResponse.ok) throw new Error('Reports folder not found');
+        const files = await repResponse.json();
+        const pdfs = files.filter(f => f.name.toLowerCase().endsWith('.pdf'));
+
+        if (pdfs.length === 0) {
+          container.innerHTML = `<p class="py-5 text-sm text-slate-400">No reports uploaded yet.</p>`;
+          return;
+        }
+
+        container.innerHTML = pdfs.map(file => {
+          // Strip .pdf extension and split "Company Name - Quarter"
+          const cleanName = file.name.replace(/\.pdf$/i, '');
+          const parts = cleanName.split(' - ');
+          const company = parts[0].trim();
+          const quarter = parts[1] ? parts[1].trim() : '';
+
+          return `
+            <a href="reports/${encodeURIComponent(file.name)}" target="_blank" rel="noopener noreferrer"
+               class="py-4 flex items-center justify-between gap-4 group hover:bg-slate-100/70 -mx-3 px-3 rounded transition">
+              <span class="text-base font-medium text-slate-800 group-hover:text-slate-950">
+                ${company}
+              </span>
+              <div class="flex items-center gap-4 shrink-0">
+                ${quarter ? `<span class="text-xs font-medium text-slate-500 bg-slate-100 px-2.5 py-1 rounded">${quarter}</span>` : ''}
+                <span class="text-xs text-slate-400 group-hover:text-slate-900 transition">PDF &nearr;</span>
+              </div>
+            </a>
+          `;
+        }).join('');
+      } catch (e) {
+        container.innerHTML = `<p class="py-5 text-sm text-slate-400">Unable to load reports right now.</p>`;
+      }
+    }
+
+    if (window.location.hash === '#reports') showPage('reports');
+    loadPortfolioFiles();
+  </script>
+</body>
+</html>
