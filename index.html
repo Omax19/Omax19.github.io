@@ -46,8 +46,8 @@
   </script>
 
   <!-- Minimal Top Navigation -->
-  <header class="w-full max-w-4xl mx-auto px-6 sm:px-10 pt-8 pb-2 flex items-center justify-end">
-    <nav class="flex items-center gap-8 text-xs uppercase tracking-[0.18em] text-[#767168]">
+  <header class="w-full max-w-6xl mx-auto px-6 sm:px-12 pt-9 pb-4 flex items-center justify-end">
+    <nav class="flex items-center gap-10 text-xs uppercase tracking-[0.18em] text-[#767168]">
       <a href="#home" onclick="showPage('home')" id="nav-home" class="text-[#EFECE6] font-medium border-b border-[#C5A869] pb-1 transition">
         Home
       </a>
@@ -58,30 +58,30 @@
   </header>
 
   <!-- Main Content -->
-  <main class="w-full max-w-4xl mx-auto px-6 sm:px-10 my-auto py-10">
+  <main class="w-full max-w-6xl mx-auto px-6 sm:px-12 my-auto py-14 sm:py-20">
 
-    <!-- VIEW 1: FRAMED CENTERED LANDING CARD -->
-    <section id="page-home" class="w-full border border-[#C5A869]/60 bg-[#191C1A]/60 px-6 sm:px-14 py-12 sm:py-16">
-      <div class="max-w-2xl mx-auto flex flex-col items-center text-center">
+    <!-- VIEW 1: SPACIOUS CENTERED LANDING -->
+    <section id="page-home" class="w-full py-6 sm:py-10">
+      <div class="max-w-4xl mx-auto flex flex-col items-center text-center">
 
-        <h1 class="font-editorial text-4xl sm:text-5xl font-medium uppercase tracking-[0.06em] text-[#EFECE6] leading-tight">
+        <h1 class="font-editorial text-5xl sm:text-7xl font-medium uppercase tracking-[0.06em] text-[#EFECE6] leading-[1.05]">
           Omkar Mohite
         </h1>
 
-        <p class="mt-4 text-[15px] sm:text-base text-[#A6A096] leading-[1.75] max-w-xl">
+        <p class="mt-6 text-base sm:text-lg text-[#A6A096] leading-[1.8] max-w-3xl">
           NISM-certified buy-side equity research analyst (MMS in Finance) with ~2 years of experience authoring equity research reports, financial models, and governance diligence across Kotak Capital Partners and ISS—building toward institutional fund management[cite: 6, 7].
         </p>
 
-        <div class="w-full h-px bg-[#C5A869]/45 my-9"></div>
+        <div class="w-full max-w-3xl h-px bg-[#C5A869]/45 my-12 sm:my-14"></div>
 
-        <div class="w-full max-w-lg grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+        <div class="w-full max-w-2xl grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-8">
           <a id="resume-link" href="javascript:void(0)"
-             class="w-full inline-flex items-center justify-center px-6 py-3.5 text-xs uppercase tracking-[0.16em] font-medium text-[#141615] bg-[#C5A869] hover:bg-[#D4B97D] border border-[#C5A869] transition opacity-60 pointer-events-none">
+             class="w-full inline-flex items-center justify-center px-8 py-4 text-xs sm:text-sm uppercase tracking-[0.16em] font-medium text-[#141615] bg-[#C5A869] hover:bg-[#D4B97D] border border-[#C5A869] transition opacity-60 pointer-events-none">
             <span>Resume</span>
           </a>
 
           <button onclick="showPage('reports')"
-             class="w-full inline-flex items-center justify-center px-6 py-3.5 text-xs uppercase tracking-[0.16em] font-medium text-[#EFECE6] bg-[#141615] border border-[#C5A869]/60 hover:border-[#C5A869] hover:text-[#C5A869] transition cursor-pointer">
+             class="w-full inline-flex items-center justify-center px-8 py-4 text-xs sm:text-sm uppercase tracking-[0.16em] font-medium text-[#EFECE6] bg-[#191C1A] border border-[#C5A869]/60 hover:border-[#C5A869] hover:text-[#C5A869] transition cursor-pointer">
             <span>Research reports</span>
           </button>
         </div>
@@ -90,13 +90,13 @@
     </section>
 
     <!-- VIEW 2: RESEARCH REPORTS LEDGER -->
-    <section id="page-reports" class="hidden w-full border border-[#C5A869]/60 bg-[#191C1A]/60 px-6 sm:px-14 py-10 sm:py-12 space-y-6">
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[#2A2E2C] pb-5">
+    <section id="page-reports" class="hidden w-full max-w-4xl mx-auto py-4 space-y-8">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[#2A2E2C] pb-6">
         <div class="space-y-2">
           <button onclick="showPage('home')" class="text-[11px] uppercase tracking-[0.18em] text-[#767168] hover:text-[#C5A869] transition block cursor-pointer">
             &larr; Home
           </button>
-          <h2 class="font-editorial text-3xl sm:text-4xl font-medium text-[#EFECE6] tracking-[-0.01em] leading-none">
+          <h2 class="font-editorial text-4xl sm:text-5xl font-medium text-[#EFECE6] tracking-[-0.01em] leading-none">
             Coverage &amp; Reports
           </h2>
         </div>
@@ -114,7 +114,7 @@
   </main>
 
   <!-- Minimal Footer -->
-  <footer class="w-full max-w-4xl mx-auto px-6 sm:px-10 py-6 border-t border-[#2A2E2C] text-xs text-[#767168] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+  <footer class="w-full max-w-6xl mx-auto px-6 sm:px-12 py-8 border-t border-[#2A2E2C] text-xs text-[#767168] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
     <span class="num-standard text-xs tracking-normal">&copy; <span id="year"></span> Omkar Mohite</span>
     <a href="mailto:omkar19mohite.om@gmail.com" class="hover:text-[#C5A869] underline underline-offset-4 decoration-[#2A2E2C] hover:decoration-[#C5A869] transition">
       omkar19mohite.om@gmail.com
@@ -191,15 +191,15 @@
 
           return `
             <a href="reports/${encodeURIComponent(file.name)}" target="_blank" rel="noopener noreferrer"
-               class="py-4 flex items-center justify-between gap-4 group transition">
+               class="py-5 flex items-center justify-between gap-4 group transition">
               <div class="flex items-baseline gap-5">
                 <span class="num-standard text-xs text-[#767168]">${indexNum}</span>
-                <span class="font-editorial text-2xl text-[#EFECE6] group-hover:text-[#C5A869] group-hover:underline underline-offset-4 decoration-[#C5A869] transition">
+                <span class="font-editorial text-2xl sm:text-3xl text-[#EFECE6] group-hover:text-[#C5A869] group-hover:underline underline-offset-4 decoration-[#C5A869] transition">
                   ${company}
                 </span>
               </div>
               <div class="flex items-center gap-6 shrink-0">
-                ${quarter ? `<span class="num-standard text-xs text-[#C5A869] border border-[#2A2E2C] bg-[#141615] px-3 py-1">${quarter}</span>` : ''}
+                ${quarter ? `<span class="num-standard text-xs text-[#C5A869] border border-[#2A2E2C] bg-[#191C1A] px-3 py-1">${quarter}</span>` : ''}
                 <span class="text-xs uppercase tracking-wider text-[#767168] group-hover:text-[#EFECE6] transition">PDF &nearr;</span>
               </div>
             </a>
