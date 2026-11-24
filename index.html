@@ -63,48 +63,54 @@
   <!-- Main Content -->
   <main class="w-full max-w-4xl mx-auto px-6 sm:px-10 my-auto py-14 sm:py-20">
 
-    <!-- VIEW 1: SYMMETRICAL SPLIT EDITORIAL LANDING PAGE -->
-    <section id="page-home" class="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12 items-center">
+    <!-- VIEW 1: AUTO-ALIGNED SPLIT EDITORIAL LANDING PAGE -->
+    <section id="page-home" class="grid grid-cols-1 md:grid-cols-12 md:grid-rows-[auto_1fr_auto] gap-x-10 md:gap-x-12 gap-y-6 items-start">
 
-      <!-- Left Column: Identity & Actions (Vertically Centered) -->
-      <div class="md:col-span-5 md:self-stretch flex flex-col justify-center space-y-6 md:border-r md:border-[#2A2E2C] md:pr-10 py-2">
-        <div class="space-y-3">
-          <p class="text-[11px] uppercase tracking-[0.22em] text-[#C5A869]">
-            Buy-Side Analyst
-          </p>
-          <h1 class="font-editorial text-5xl sm:text-[3.5rem] font-medium tracking-[-0.01em] text-[#EFECE6] leading-[1.02]">
-            Omkar Mohite
-          </h1>
-        </div>
-
-        <div class="w-10 h-px bg-[#C5A869]/60"></div>
-
-        <div class="flex flex-col sm:flex-row md:flex-col gap-3 pt-1">
-          <a id="resume-link" href="javascript:void(0)"
-             class="inline-flex items-center justify-between px-5 py-3 text-xs uppercase tracking-[0.16em] font-medium text-[#141615] bg-[#C5A869] hover:bg-[#D4B97D] transition opacity-60 pointer-events-none">
-            <span>Resume</span>
-            <span class="text-[11px]">PDF &nearr;</span>
-          </a>
-
-          <button onclick="showPage('reports')"
-             class="inline-flex items-center justify-between px-5 py-3 text-xs uppercase tracking-[0.16em] font-medium text-[#EFECE6] bg-[#191C1A] border border-[#2A2E2C] hover:border-[#C5A869] transition cursor-pointer">
-            <span>Research Reports</span>
-            <span class="text-[#C5A869]">&rarr;</span>
-          </button>
-        </div>
+      <!-- Row 1 Left: Eyebrow -->
+      <div class="md:col-start-1 md:col-span-5 md:border-r md:border-[#2A2E2C] md:pr-10">
+        <p class="text-[11px] uppercase tracking-[0.22em] text-[#C5A869]">
+          Buy-Side Analyst
+        </p>
       </div>
 
-      <!-- Right Column: Background & Focus (Auto-Adjusts Height Symmetrically) -->
-      <div class="md:col-span-7 flex flex-col justify-center space-y-5 py-2">
+      <!-- Row 1 Right: Section Label -->
+      <div class="md:col-start-6 md:col-span-7">
         <p class="text-[11px] uppercase tracking-[0.2em] text-[#767168]">
           Background
         </p>
+      </div>
+
+      <!-- Row 2 Left: Name & Rule -->
+      <div class="md:col-start-1 md:col-span-5 md:border-r md:border-[#2A2E2C] md:pr-10 space-y-5">
+        <h1 class="font-editorial text-5xl sm:text-[3.5rem] font-medium tracking-[-0.01em] text-[#EFECE6] leading-[1.02]">
+          Omkar Mohite
+        </h1>
+        <div class="w-10 h-px bg-[#C5A869]/60"></div>
+      </div>
+
+      <!-- Row 2 Right: Headline & Bio (Any Length) -->
+      <div class="md:col-start-6 md:col-span-7 space-y-5">
         <p class="font-editorial text-2xl sm:text-[1.75rem] text-[#EFECE6] leading-[1.35] font-normal">
           Sector-agnostic buy-side equity research across 29 companies and 15 sectors—built on fundamental modeling, forensic diligence, and governance discipline.
         </p>
         <p class="text-[15px] text-[#A6A096] leading-[1.8]">
           NISM-certified buy-side equity research analyst (MMS in Finance) with ~2 years of experience authoring equity research reports, financial models, and governance diligence across Kotak Capital Partners and ISS—building toward institutional fund management.
         </p>
+      </div>
+
+      <!-- Row 3 Left: Action Buttons -->
+      <div class="md:col-start-1 md:col-span-5 md:border-r md:border-[#2A2E2C] md:pr-10 flex flex-col sm:flex-row md:flex-col gap-3 pt-2">
+        <a id="resume-link" href="javascript:void(0)"
+           class="inline-flex items-center justify-between px-5 py-3 text-xs uppercase tracking-[0.16em] font-medium text-[#141615] bg-[#C5A869] hover:bg-[#D4B97D] transition opacity-60 pointer-events-none">
+          <span>Resume</span>
+          <span class="num-standard text-xs">PDF &nearr;</span>
+        </a>
+
+        <button onclick="showPage('reports')"
+           class="inline-flex items-center justify-between px-5 py-3 text-xs uppercase tracking-[0.16em] font-medium text-[#EFECE6] bg-[#191C1A] border border-[#2A2E2C] hover:border-[#C5A869] transition cursor-pointer">
+          <span>Research Reports</span>
+          <span class="text-[#C5A869]">&rarr;</span>
+        </button>
       </div>
 
     </section>
